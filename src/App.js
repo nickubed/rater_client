@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import CardDisplay from './components/cardDisplay'
-const API_URL = 'http://acnhapi.com/v1/villagers/1'
+const API_URL = 'http://acnhapi.com/v1/villagers/'
 const DB_URL = 'http://localhost:3000'
 
 const App = (props) => {
@@ -10,17 +10,18 @@ const App = (props) => {
   let [userChoice, setUserChoice] = useState([])
   
   useEffect(() => {
-  document.title = 'Villager Rater'
-  const getData = async() => {
-    let rdata = await fetch(API_URL).then(response => response.json())
-      // rdata = Object.values(rdata)
-      setData({hits: rdata})
-  }
-  getData()
-}, [])
+    document.title = 'Villager Rater'
+    const getData = async() => {
+      let rdata = await fetch(API_URL).then(response => response.json())
+        rdata = Object.values(rdata)
+        setData({hits: rdata})
+    }
+    getData()
+  }, [])
 // sets the displayed villager to be the 0th element of the dataset, triggers hasData (needs handling for when the array is emptied)
   const makeCurrent = (data) => {
-    setCurrent(data.hits)
+    console.log(data)
+    setCurrent(data.hits.shift())
     setData(data)
     setHasData(true)
   }
@@ -54,6 +55,7 @@ const App = (props) => {
   }
 
   if(hasData){
+    console.log(current)
     return (
       <div>
         <div>
