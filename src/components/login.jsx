@@ -15,7 +15,7 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         //Fetch it up
-        fetch(`${process.env.REACT_APP_DB_URL}/auth/login`, {
+        fetch(`http://localhost:3000/auth/login`, {
             method: 'POST',
             body: JSON.stringify({
                 email,
