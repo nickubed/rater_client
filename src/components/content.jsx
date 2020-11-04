@@ -5,6 +5,8 @@ import Login from './login'
 const API_URL = 'http://acnhapi.com/v1/villagers/'
 const DB_URL = 'http://localhost:3000'
 
+//TO DO: Refine breakpoint to open "submit" button display
+
 const Content = (props) => {
     let [data, setData] = useState({hits: []})
     let [current, setCurrent] = useState({})
@@ -22,14 +24,11 @@ const Content = (props) => {
     }, [])
 
     // sets the displayed villager to be the 0th element of the dataset, triggers hasData (needs handling for when the array is emptied)
-    const makeCurrent = (data) => {
+    // Sets us all up, dismiss welcome message and make current carry data to satisfy conditional render
+    const handleClick = (e) => {
         setCurrent(data.hits.shift())
         setData(data)
         setHasData(true)
-    }
-    // Sets us all up, dismiss welcome message and make current carry data to satisfy conditional render
-    const handleClick = (e) => {
-        makeCurrent(data)
     }
     // This effectively creates the "schema" that will match up with the back-end. Harvests just what we need from the API
     const addVillager = (e) => {
