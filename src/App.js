@@ -6,6 +6,10 @@ import Content from './components/content'
 const App = (props) => {
   let [user, setUser] = useState(null)
 
+  useEffect(() => {
+    decodeToken(null)
+  }, [])
+
   const updateUser = (newToken) => {
     if(newToken){
       //Store the token into local

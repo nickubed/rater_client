@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Route } from 'react-router-dom'
+// import { Route } from 'react-router-dom'
 import CardDisplay from './cardDisplay'
+import Login from './login'
 const API_URL = 'http://acnhapi.com/v1/villagers/'
 const DB_URL = 'http://localhost:3000'
 
@@ -22,14 +23,12 @@ const Content = (props) => {
 
     // sets the displayed villager to be the 0th element of the dataset, triggers hasData (needs handling for when the array is emptied)
     const makeCurrent = (data) => {
-        console.log(data)
         setCurrent(data.hits.shift())
         setData(data)
         setHasData(true)
     }
     // Sets us all up, dismiss welcome message and make current carry data to satisfy conditional render
     const handleClick = (e) => {
-        console.log(DB_URL)
         makeCurrent(data)
     }
     // This effectively creates the "schema" that will match up with the back-end. Harvests just what we need from the API
@@ -47,7 +46,7 @@ const Content = (props) => {
     const submitChoice = () => {
         fetch(`${DB_URL}/villager/new`, {
         method: 'POST',
-        body: JSON.stringify({userChoice: userChoice, user: 1}),
+        body: JSON.stringify({userChoice: userChoice, user: props.user}),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -63,15 +62,23 @@ const Content = (props) => {
             <div>
             <CardDisplay villager={current} addVillager={addVillager} />
             </div>
-            <button onClick={submitChoice}>Submit!</button>
         </div>
         );
+    }
+    else if(data.length < 1){
+        return(
+            <div>
+                <h1>Thank you!</h1>
+                <button onClick={submitChoice}>Submit!</button>
+            </div>
+        )
     }
     else{
         return(
         <div>
             <h1>Welcome!</h1>
             <button onClick={handleClick}>Hello</button>
+            <Login updateUser={props.updateUser}/>
         </div>
         )
     }
