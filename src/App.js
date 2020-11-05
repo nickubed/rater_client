@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import Content from './components/content'
 import Login from './components/login'
+import Register from './components/register'
 
 const App = (props) => {
   let [user, setUser] = useState(null)
@@ -56,6 +57,7 @@ const App = (props) => {
           </main>
           <hr/>
           <Login updateUser={updateUser}/>
+          <Register updateUser={updateUser}/>
         </div>
       </Router>
     )

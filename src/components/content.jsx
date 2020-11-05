@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 // import { Route } from 'react-router-dom'
 import CardDisplay from './cardDisplay'
 import Confirm from './confirm'
-import Login from './login'
 const API_URL = 'http://acnhapi.com/v1/villagers/'
 const DB_URL = 'http://localhost:3000'
 
