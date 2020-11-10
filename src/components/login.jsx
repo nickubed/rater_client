@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-// import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 
 const Login = (props) => {
@@ -15,7 +15,7 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         //Fetch it up
-        fetch(`http://localhost:3000/auth/login`, {
+        fetch(`${process.env.REACT_APP_DB_URL}/auth/login`, {
             method: 'POST',
             body: JSON.stringify({
                 email,
@@ -42,6 +42,10 @@ const Login = (props) => {
             console.log(err)
             setMessage(`${err.toString()}`)
         })
+    }
+
+    if(props.user){
+        return <Redirect to="/selector" />
     }
 
     return(

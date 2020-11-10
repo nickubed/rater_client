@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import Content from './components/content'
-import Login from './components/login'
-import Register from './components/register'
+import Nav from './components/nav'
 
 const App = (props) => {
   let [user, setUser] = useState(null)
@@ -43,39 +42,18 @@ const App = (props) => {
     }
   }
 
-  const handleLogout = (e) => {
-    e.preventDefault()
-    localStorage.removeItem('userToken')
-    updateUser(null)
-  }
-  if(!user){
-    return (
-      <Router>
-        <div className="app">
-          <main>
-            <Content user={user} updateUser={updateUser}/>
-          </main>
-          <hr/>
-          <Login updateUser={updateUser}/>
-          <Register updateUser={updateUser}/>
-        </div>
-      </Router>
-    )
-  } else {
-    return (
-      <Router>
-        <div className="app">
-          <main>
-            <Content user={user} updateUser={updateUser}/>
-          </main>
-          <hr/>
-          <p>Hey, {user.name}! Thanks for logging in :D</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      </Router>
-    )
-  }
 
+    return (
+      <Router>
+        <div className="app">
+        <Nav updateUser={updateUser} user={user}/>
+        <hr/>
+          <main>
+            <Content user={user} updateUser={updateUser}/>
+          </main>
+        </div>
+      </Router>
+    )
 }
 
 export default App;
