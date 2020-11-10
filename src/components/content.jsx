@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 // import { Route } from 'react-router-dom'
 import CardDisplay from './cardDisplay'
 import Confirm from './confirm'
-const API_URL = 'http://acnhapi.com/v1/villagers/'
-const DB_URL = 'http://localhost:3000'
 
 //TO DO: Refine breakpoint to open "submit" button display
 
@@ -16,7 +14,7 @@ const Content = (props) => {
     useEffect(() => {
         document.title = 'Villager Rater'
         const getData = async() => {
-            let rdata = await fetch(API_URL).then(response => response.json())
+            let rdata = await fetch(process.env.REACT_APP_API_URL).then(response => response.json())
             rdata = Object.values(rdata)
             setData({hits: rdata})
         }
@@ -47,7 +45,7 @@ const Content = (props) => {
     }
 
     const submitChoice = () => {
-        fetch(`${DB_URL}/villager/new`, {
+        fetch(`${process.env.REACT_APP_DB_URL}/villager/new`, {
         method: 'POST',
         body: JSON.stringify({userChoice: userChoice, user: props.user.id}),
         headers: {
