@@ -8,6 +8,7 @@ const App = (props) => {
   let [user, setUser] = useState(null)
 
   useEffect(() => {
+    document.title = 'Villager Rater'
     decodeToken(null)
   }, [])
 

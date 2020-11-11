@@ -20,6 +20,7 @@ const Nav = (props) => {
         links = (
             <nav style={{display: 'inline-block'}}>
                 <ul>
+                    <Link to="/selector"><li><h3>Start Rating!</h3></li></Link>
                     <li><h3>My Profile</h3></li>
                     <Link to="/myVillagers"><li><h3>My Villager Rankings</h3></li></Link>
                     <li><h3>Global Villager Rankings</h3></li>
