@@ -12,8 +12,12 @@ td{
     -webkit-transition: height 2s;
     z-index: -1;
 }
+th{
+    text-align: left;
+}
 
 td :hover{
+    position: absolute;
     height: 10vh;
     width: 10vw;
     z-index: 5;

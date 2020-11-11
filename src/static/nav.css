@@ -6,6 +6,7 @@ ul {
 }
 
 li {
+    cursor: pointer;
     float: left;
     padding:  0px 15px;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -16,6 +17,11 @@ li {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+a{
+    color: black;
+}
+
 
 li :hover{
     color: blue;

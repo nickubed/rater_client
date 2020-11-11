@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import '../static/griddle.css'
 import {Redirect} from 'react-router-dom'
 
+// Don't judge me on this atrocious component, please. Needs refactor.
 const DisplayGrid = (props) => {
     let [fGrid, setfGrid] = useState([])
     let [dGrid, setdGrid] = useState([])
@@ -51,27 +52,21 @@ const DisplayGrid = (props) => {
 
     const renderRow = () => {
         setfGrid(f.map((villager, i) => {
-            console.log('Chirp!')
             return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
         }))
         setdGrid(d.map((villager, i) => {
-            console.log('Chirp!')
             return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
         }))
         setcGrid(c.map((villager, i) => {
-            console.log('Chirp!')
             return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
         }))
         setbGrid(b.map((villager, i) => {
-            console.log('Chirp!')
             return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
         }))
         setaGrid(a.map((villager, i) => {
-            console.log('Chirp!')
             return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
         }))
         setsGrid(s.map((villager, i) => {
-            console.log('Chirp!')
             return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
         }))
     }

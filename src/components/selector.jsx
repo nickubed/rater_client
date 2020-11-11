@@ -11,7 +11,6 @@ const Selector = (props) => {
     let [userChoice, setUserChoice] = useState([])
 
     useEffect(() => {
-        document.title = 'Villager Rater'
         const getData = async() => {
             let rdata = await fetch(process.env.REACT_APP_API_URL).then(response => response.json())
             rdata = Object.values(rdata)
@@ -63,9 +62,9 @@ const Selector = (props) => {
         return (
         <div>
             <div>
-            <CardDisplay villager={current} addVillager={addVillager} />
+                <CardDisplay villager={current} addVillager={addVillager} />
             </div>
-        <DisplayGrid user={props.user}/>
+            <DisplayGrid user={props.user}/>
         </div>
         );
     }

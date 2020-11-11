@@ -51,11 +51,15 @@ const Register = (props) => {
         <div>
             <h5>{message}</h5>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" onChange={e => setName(e.currentTarget.value)} />
-                <input type="email" name="email" placeholder="email" onChange={e => setEmail(e.currentTarget.value)} />
-                <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.currentTarget.value)} />
-                <input type="text" name="photo" placeholder="An Image URL" onChange={e => setPhoto(e.currentTarget.value)} />
-                <input type="textarea" name="about" placeholder="A little about you!" onChange={e => setAbout(e.currentTarget.value)} />
+                <div>
+                    <input type="text" name="name" placeholder="Name" onChange={e => setName(e.currentTarget.value)} />
+                    <input type="email" name="email" placeholder="email" onChange={e => setEmail(e.currentTarget.value)} />
+                    <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.currentTarget.value)} />
+                </div>
+                <div>
+                    <input type="text" name="photo" placeholder="An Image URL" onChange={e => setPhoto(e.currentTarget.value)} />
+                    <input type="textarea" name="about" placeholder="A little about you!" onChange={e => setAbout(e.currentTarget.value)} />   
+                </div>
                 <button type="submit">Register!</button>
             </form>
         </div>

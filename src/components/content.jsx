@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import '../static/main.css'
 import Register from './register'
 import Login from './login'
 import Selector from './selector'
@@ -20,7 +21,6 @@ const Content = (props) => {
         <Route path="/myVillagers" render={
             ()=> <DisplayGrid user={props.user} />
         } />
-        <h1>Welcome!</h1>
     </div>
     )
     
