@@ -1,0 +1,12 @@
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+td{
+    border: 2px solid black;
+}
+
+.villagerPic {
+    max-width: 2vw;
+  }
