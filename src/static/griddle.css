@@ -21,4 +21,5 @@ td :hover{
     height: 10vh;
     width: 10vw;
     z-index: 5;
+    border: 6px solid teal;
 }

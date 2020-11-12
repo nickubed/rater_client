@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import '../static/griddle.css'
 import {Redirect} from 'react-router-dom'
+import DisplayCell from './displayCell'
 
 // Don't judge me on this atrocious component, please. Needs refactor.
 const DisplayGrid = (props) => {
@@ -10,39 +11,25 @@ const DisplayGrid = (props) => {
     let [bGrid, setbGrid] = useState([])
     let [aGrid, setaGrid] = useState([])
     let [sGrid, setsGrid] = useState([])
-    let f = []
-    let d = []
-    let c = []
-    let b = []
-    let a = []
-    let s = []
+    let [cell, setCell] = useState()
+    let grid = {
+        F: [],
+        D: [],
+        C: [],
+        B: [],
+        A: [],
+        S: []
+    }
     useEffect(() => {
         if(props.user){
-            fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
+            const performFetch = async() => { 
+            let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
             .then(response => response.json())
-                .then(villagers => {
-                    villagers.forEach((villager) => {
-                        if(villager.usersVillagers.grade === 'F'){
-                            f.push(villager)
-                        }
-                        if(villager.usersVillagers.grade === 'D'){
-                            d.push(villager)
-                        }
-                        if(villager.usersVillagers.grade === 'C'){
-                            c.push(villager)
-                        }
-                        if(villager.usersVillagers.grade === 'B'){
-                            b.push(villager)
-                        }
-                        if(villager.usersVillagers.grade === 'A'){
-                            a.push(villager)
-                        }
-                        if(villager.usersVillagers.grade === 'S'){
-                            s.push(villager)
-                        }
-                    })
-                }
-            )
+            result.forEach((villager) => {
+                grid[villager.usersVillagers.grade].push(villager)
+            })
+        }
+        performFetch()
         }
     })
 
@@ -51,23 +38,23 @@ const DisplayGrid = (props) => {
     }
 
     const renderRow = () => {
-        setfGrid(f.map((villager, i) => {
-            return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
+        setfGrid(grid['F'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} />
         }))
-        setdGrid(d.map((villager, i) => {
-            return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
+        setdGrid(grid['D'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} />
         }))
-        setcGrid(c.map((villager, i) => {
-            return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
+        setcGrid(grid['C'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} />
         }))
-        setbGrid(b.map((villager, i) => {
-            return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
+        setbGrid(grid['B'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} />
         }))
-        setaGrid(a.map((villager, i) => {
-            return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
+        setaGrid(grid['A'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} />
         }))
-        setsGrid(s.map((villager, i) => {
-            return <td key={i}><img className="villagerPic" src={villager.img} alt={villager.name}></img></td>
+        setsGrid(grid['S'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} />
         }))
     }
     
@@ -106,6 +93,7 @@ const DisplayGrid = (props) => {
                 </tbody>
             </table>
             <button onClick={handleCheck}>Check</button>
+            {cell}
         </div>
     )
 }
