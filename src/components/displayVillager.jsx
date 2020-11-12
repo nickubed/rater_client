@@ -5,7 +5,8 @@ const DisplayVillager = (props) => {
 
     const showSelect = () => {
             return(
-                setToggle(<div>
+                setToggle(
+                <div>
                     <select>
                         <option>S</option>
                         <option>A</option>
@@ -14,8 +15,8 @@ const DisplayVillager = (props) => {
                         <option>D</option>
                         <option>F</option>
                     </select>
-                </div>)
-            )
+                </div>
+            ))
     }
     return(
         <div>
@@ -23,7 +24,7 @@ const DisplayVillager = (props) => {
             <div>
                 <img src={props.villager.img} alt={props.villager.name} />
             </div>
-        <button onClick={(e)=> showSelect}>Edit</button>
+        <button onClick={(e)=> showSelect()}>Edit</button>
         {toggle}
         </div>
     )
