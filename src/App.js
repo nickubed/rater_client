@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 import Content from './components/content'
 import Nav from './components/nav'
 
-const App = (props) => {
+const App = () => {
   let [user, setUser] = useState(null)
 
   useEffect(() => {

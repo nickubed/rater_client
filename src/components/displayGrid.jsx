@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../static/griddle.css'
 import { Redirect } from 'react-router-dom'
 import DisplayCell from './displayCell'
@@ -13,9 +13,9 @@ const DisplayGrid = (props) => {
     let [sGrid, setsGrid] = useState([])
     let [cell, setCell] = useState()
 
-    const handleCheck = () => {
+    useEffect(() => {
         renderRow()
-    }
+    })
 
     const renderRow = () => {
         setfGrid(props.grid['F'].map((villager, i) => {
@@ -72,7 +72,6 @@ const DisplayGrid = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={handleCheck}>Check</button>
             {cell}
         </div>
     )

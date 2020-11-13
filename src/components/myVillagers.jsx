@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import DisplayGrid from './displayGrid'
 
 const MyVillagers = (props) => {
@@ -22,6 +23,12 @@ const MyVillagers = (props) => {
         performFetch()
         }
     })
+
+    if(!props.user){
+        return(
+            <Redirect to="/" />
+        )
+    }
 
     return(
         <div>
