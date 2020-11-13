@@ -11,8 +11,8 @@ const Nav = (props) => {
     let links = (
         <nav>
             <ul>
-                <Link to="/login"><li><h3>Login</h3></li></Link>
-                <Link to="/"><li><h3>Register</h3></li></Link>
+                <Link to="/"><li><h3>Login</h3></li></Link>
+                <Link to="/register"><li><h3>Register</h3></li></Link>
             </ul>
         </nav>
     )

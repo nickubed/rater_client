@@ -11,10 +11,10 @@ const Content = (props) => {
     return(
     <div>
         <Route exact path="/" render={
-            ()=> <Register updateUser={props.updateUser} />
-        } />
-        <Route path="/login" render={
             ()=> <Login user={props.user} updateUser={props.updateUser} />
+        } />
+        <Route path="/register" render={
+            ()=> <Register updateUser={props.updateUser} />
         } />
         <Route path="/selector" render={
             ()=> <Selector user={props.user} />
