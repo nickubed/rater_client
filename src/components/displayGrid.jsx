@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import '../static/griddle.css'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import DisplayCell from './displayCell'
 
 // Don't judge me on this atrocious component, please. Needs refactor.

@@ -1,31 +1,18 @@
 import React, {useState} from 'react'
+import SelectGrade from './selectGrade'
 
 const DisplayVillager = (props) => {
     let [toggle, setToggle] = useState()
-
-    const showSelect = () => {
-            return(
-                setToggle(
-                <div>
-                    <select>
-                        <option>S</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>F</option>
-                    </select>
-                </div>
-            ))
-    }
+    let [grade, setGrade] = useState(props.villager.usersVillagers.grade)
+    
     return(
         <div>
             <p>{props.villager.name}</p>
             <div>
                 <img src={props.villager.img} alt={props.villager.name} />
             </div>
-        <button onClick={(e)=> showSelect()}>Edit</button>
-        {toggle}
+            {grade}
+            <SelectGrade setGrade={setGrade} toggle={toggle} setToggle={setToggle} />
         </div>
     )
 }
