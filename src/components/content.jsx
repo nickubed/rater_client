@@ -4,7 +4,8 @@ import '../static/main.css'
 import Register from './register'
 import Login from './login'
 import Selector from './selector'
-import DisplayGrid from './displayGrid'
+import MyVillagers from './myVillagers'
+import AllVillagers from './allVillagers'
 
 const Content = (props) => {
     return(
@@ -19,7 +20,10 @@ const Content = (props) => {
             ()=> <Selector user={props.user} />
         } />
         <Route path="/myVillagers" render={
-            ()=> <DisplayGrid user={props.user} />
+            ()=> <MyVillagers user={props.user} />
+        } />
+        <Route path="/allVillagers" render={
+            ()=> <AllVillagers user={props.user} />
         } />
     </div>
     )

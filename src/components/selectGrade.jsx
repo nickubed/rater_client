@@ -27,12 +27,19 @@ const SelectGrade = (props) => {
         }
     }
 
+    if(props.edit){
     return(
         <div>
             <button onClick={(e) => showSelect()}>{btnText}</button>
             {props.toggle}
         </div>
     )
+    } else {
+        return(
+            <div>
+            </div>
+        )
+    }
 }
 
 export default SelectGrade

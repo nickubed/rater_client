@@ -12,7 +12,7 @@ const DisplayVillager = (props) => {
                 <img src={props.villager.img} alt={props.villager.name} />
             </div>
             {grade}
-            <SelectGrade setGrade={setGrade} toggle={toggle} setToggle={setToggle} />
+            <SelectGrade setGrade={setGrade} toggle={toggle} setToggle={setToggle} edit={props.edit} />
         </div>
     )
 }

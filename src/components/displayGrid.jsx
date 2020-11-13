@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import '../static/griddle.css'
 import { Redirect } from 'react-router-dom'
 import DisplayCell from './displayCell'
@@ -12,49 +12,29 @@ const DisplayGrid = (props) => {
     let [aGrid, setaGrid] = useState([])
     let [sGrid, setsGrid] = useState([])
     let [cell, setCell] = useState()
-    let grid = {
-        F: [],
-        D: [],
-        C: [],
-        B: [],
-        A: [],
-        S: []
-    }
-    useEffect(() => {
-        if(props.user){
-            const performFetch = async() => { 
-            let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
-            .then(response => response.json())
-            result.forEach((villager) => {
-                grid[villager.usersVillagers.grade].push(villager)
-            })
-        }
-        performFetch()
-        }
-    })
 
     const handleCheck = () => {
         renderRow()
     }
 
     const renderRow = () => {
-        setfGrid(grid['F'].map((villager, i) => {
-            return <DisplayCell setCell={setCell} villager={villager} i={i} />
+        setfGrid(props.grid['F'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} edit={props.edit} />
         }))
-        setdGrid(grid['D'].map((villager, i) => {
-            return <DisplayCell setCell={setCell} villager={villager} i={i} />
+        setdGrid(props.grid['D'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} edit={props.edit} />
         }))
-        setcGrid(grid['C'].map((villager, i) => {
-            return <DisplayCell setCell={setCell} villager={villager} i={i} />
+        setcGrid(props.grid['C'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} edit={props.edit}/>
         }))
-        setbGrid(grid['B'].map((villager, i) => {
-            return <DisplayCell setCell={setCell} villager={villager} i={i} />
+        setbGrid(props.grid['B'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} edit={props.edit}/>
         }))
-        setaGrid(grid['A'].map((villager, i) => {
-            return <DisplayCell setCell={setCell} villager={villager} i={i} />
+        setaGrid(props.grid['A'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} edit={props.edit}/>
         }))
-        setsGrid(grid['S'].map((villager, i) => {
-            return <DisplayCell setCell={setCell} villager={villager} i={i} />
+        setsGrid(props.grid['S'].map((villager, i) => {
+            return <DisplayCell setCell={setCell} villager={villager} i={i} edit={props.edit}/>
         }))
     }
     
