@@ -1,28 +1,32 @@
-import React, {useEffect} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import DisplayGrid from './displayGrid'
 
 const MyVillagers = (props) => {
-    let grid = {
+    let [grid, setGrid] = useState({
         F: [],
         D: [],
         C: [],
         B: [],
         A: [],
         S: []
-    }
+    })
+    let [postEdit, setPostEdit] = useState(false)
+    
     useEffect(() => {
+        console.log(postEdit)
+        setPostEdit(false)
         if(props.user){
             const performFetch = async() => { 
-            let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
-            .then(response => response.json())
-            result.forEach((villager) => {
-                grid[villager.usersVillagers.grade].push(villager)
-            })
+                let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
+                .then(response => response.json())
+                result.forEach((villager) => {
+                    grid[villager.usersVillagers.grade].push(villager)
+                })
+            }
+            performFetch()
         }
-        performFetch()
-        }
-    })
+    }, [postEdit, grid, props.user])
 
     if(!props.user){
         return(
@@ -32,7 +36,7 @@ const MyVillagers = (props) => {
 
     return(
         <div>
-            <DisplayGrid grid={grid} user={props.user} edit={true}/>
+            <DisplayGrid grid={grid} user={props.user} setPostEdit={setPostEdit} edit={true}/>
         </div>
     )
 }

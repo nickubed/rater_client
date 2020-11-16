@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 const Register = (props) => {
     let [email, setEmail] = useState('')
@@ -45,6 +45,12 @@ const Register = (props) => {
         .catch(err => {
             setMessage(`Error: ${err.toString()}`)
         })
+    }
+
+    if(props.user){
+        return(
+            <Redirect to="/selector"/>
+        )
     }
 
     return (

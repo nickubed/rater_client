@@ -2,20 +2,25 @@ import React, {useState} from 'react'
 
 const SelectGrade = (props) => {
     let [btnText, setBtnText] = useState('Edit')
+    let [newGrade, setNewGrade] = useState(props.grade)
+
+    const handleSelect = (grade) => {
+        setNewGrade(grade)
+        props.submitEdit(grade, props.villager.id)
+    }
 
     const showSelect = () => {
         if(props.toggle === null){
-
             return(
                 props.setToggle(
                 <div>
-                    <select>
-                        <option>S</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>F</option>
+                    <select onChange={(e) => handleSelect(e.currentTarget.value)}>
+                        <option value='S'>S</option>
+                        <option value='A'>A</option>
+                        <option value='B'>B</option>
+                        <option value='C'>C</option>
+                        <option value='D'>D</option>
+                        <option value='F'>F</option>
                     </select>
                 </div>
                 ),

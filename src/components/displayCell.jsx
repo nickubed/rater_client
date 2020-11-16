@@ -5,11 +5,15 @@ const DisplayCell = (props) => {
     const handleClick = () => {
         props.setCell(null)
         return(
-            props.setCell(<DisplayVillager villager={props.villager} edit={props.edit} />)
+            props.setCell(<DisplayVillager submitEdit={props.submitEdit} villager={props.villager} edit={props.edit} />)
         )
     }
     return(
-        <td key={props.i}><img className="villagerPic" src={props.villager.img} alt={props.villager.name} onClick={(e) => handleClick()}/>
+        <td key={props.i}>
+            <img className="villagerPic"
+                src={props.villager.img}
+                alt={props.villager.name}
+                onClick={(e) => handleClick()}/>
         </td>
     )
 }

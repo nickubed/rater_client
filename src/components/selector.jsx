@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import CardDisplay from './cardDisplay'
 import Confirm from './confirm'
-import DisplayGrid from './displayGrid'
 
 const Selector = (props) => {
     let [data, setData] = useState({hits: []})
@@ -58,13 +57,19 @@ const Selector = (props) => {
         return <Redirect to="/" />
     }
 
+    if(props.user.villagers){
+        return(
+            <div>
+                <h1>Are you sure?</h1>
+            </div>
+        )
+    }
     if(hasData){
         return (
         <div>
             <div>
                 <CardDisplay villager={current} addVillager={addVillager} />
             </div>
-            <DisplayGrid user={props.user}/>
         </div>
         );
     }

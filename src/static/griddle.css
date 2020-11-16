@@ -2,18 +2,15 @@ table{
     width: 100%;
     table-layout: fixed;
     border: 2px solid black;
+    background-color: blue;
 }
 
 .villagerPic {
     width: 2vw;
 }
-td{
-    transition: height 2s;
-    -webkit-transition: height 2s;
-    z-index: -1;
-}
 th{
     text-align: left;
+    width: 2vw;
 }
 
 td :hover{
@@ -22,4 +19,12 @@ td :hover{
     width: 10vw;
     z-index: 5;
     border: 6px solid teal;
+}
+
+.primary {
+    background-color: aqua;
+}
+
+.secondary {
+    background-color: pink;
 }
