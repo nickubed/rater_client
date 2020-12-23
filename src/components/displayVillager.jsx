@@ -4,8 +4,6 @@ import SelectGrade from './selectGrade'
 const DisplayVillager = (props) => {
     let [toggle, setToggle] = useState()
     let [grade, setGrade] = useState(props.villager.usersVillagers.grade)
-
-    
     
     return(
         <div>
@@ -15,6 +13,7 @@ const DisplayVillager = (props) => {
             </div>
             {grade}
             <SelectGrade 
+                user={props.user}
                 villager={props.villager}
                 setGrade={setGrade}
                 toggle={toggle}

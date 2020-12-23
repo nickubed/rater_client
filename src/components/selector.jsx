@@ -69,14 +69,10 @@ const Selector = (props) => {
         <div>
             <div>
                 <CardDisplay villager={current} addVillager={addVillager} />
+                {data.hits.length < 1 ? <Confirm user={props.user} submitChoice={submitChoice} /> : null}
             </div>
         </div>
         );
-    }
-    else if(data.hits.length < 1){
-        return(
-            <Confirm user={props.user} submitChoice={submitChoice}/>
-        )
     }
     else{
         return(

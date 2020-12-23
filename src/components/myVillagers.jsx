@@ -3,31 +3,20 @@ import { Redirect } from 'react-router-dom'
 import DisplayGrid from './displayGrid'
 
 const MyVillagers = (props) => {
-    let [grid, setGrid] = useState({
-        F: [],
-        D: [],
-        C: [],
-        B: [],
-        A: [],
-        S: []
-    })
+    let [grid, setGrid] = useState([])
     let [postEdit, setPostEdit] = useState(false)
     
     useEffect(() => {
-        console.log(postEdit)
-        setPostEdit(false)
-        if(props.user){
-            const performFetch = async() => { 
-                let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
-                .then(response => response.json())
-                result.forEach((villager) => {
-                    grid[villager.usersVillagers.grade].push(villager)
-                })
-            }
-            performFetch()
+        const performFetch = async() => { 
+            let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
+            .then(response => response.json())
+            result.forEach((villager) => {
+                setGrid(grid => [...grid, villager])
+            })
         }
-    }, [postEdit, grid, props.user])
-
+        performFetch()
+    }, [props.user])
+    
     if(!props.user){
         return(
             <Redirect to="/" />

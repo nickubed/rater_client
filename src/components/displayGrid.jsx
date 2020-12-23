@@ -6,40 +6,26 @@ import ShowGrid from './showGrid'
 
 // Don't judge me on this atrocious component, please. Needs refactor.
 const DisplayGrid = (props) => {
-    let [fGrid, setfGrid] = useState([])
-    let [dGrid, setdGrid] = useState([])
-    let [cGrid, setcGrid] = useState([])
-    let [bGrid, setbGrid] = useState([])
-    let [aGrid, setaGrid] = useState([])
-    let [sGrid, setsGrid] = useState([])
+    let [viewGrid, setViewGrid] = useState(['S', 'A', 'B', 'C', 'D', 'F'])
     let [cell, setCell] = useState()
+    let [tabHead, setTabHead] = useState()
 
     useEffect(() => {
-        console.log('hit')
-        if(fGrid.length + dGrid.length + cGrid.length + bGrid.length + aGrid.length + sGrid.length !== 391){
-            const renderRow = () => {
-                setfGrid(props.grid['F'].map((villager, i) => {
-                    return <DisplayCell submitEdit={submitEdit} setCell={setCell} villager={villager} i={i} edit={props.edit} />
-                }))
-                setdGrid(props.grid['D'].map((villager, i) => {
-                    return <DisplayCell submitEdit={submitEdit} setCell={setCell} villager={villager} i={i} edit={props.edit} />
-                }))
-                setcGrid(props.grid['C'].map((villager, i) => {
-                    return <DisplayCell submitEdit={submitEdit} setCell={setCell} villager={villager} i={i} edit={props.edit}/>
-                }))
-                setbGrid(props.grid['B'].map((villager, i) => {
-                    return <DisplayCell submitEdit={submitEdit} setCell={setCell} villager={villager} i={i} edit={props.edit}/>
-                }))
-                setaGrid(props.grid['A'].map((villager, i) => {
-                    return <DisplayCell submitEdit={submitEdit} setCell={setCell} villager={villager} i={i} edit={props.edit}/>
-                }))
-                setsGrid(props.grid['S'].map((villager, i) => {
-                    return <DisplayCell submitEdit={submitEdit} setCell={setCell} villager={villager} i={i} edit={props.edit}/>
-                }))
-            }
-            renderRow()
-            }
+        let head = viewGrid.map(grade => {
+            return <tr>
+                    <td>{grade}</td>
+                    {props.grid.forEach(villager => {
+                        if(villager.usersVillagers.grade === grade){
+                            console.log('hitting')
+                            return <DisplayCell villager={villager} />
+                        }
+                    })}
+                </tr>
         })
+        setTabHead(head)
+    }, [props.grid])
+
+
 
     if(!props.user){
         return <Redirect to="/" />
@@ -66,14 +52,11 @@ const DisplayGrid = (props) => {
 
     return(
         <div>
-            <ShowGrid 
-                fGrid={fGrid}
-                dGrid={dGrid}
-                cGrid={cGrid}
-                bGrid={bGrid}
-                aGrid={aGrid}
-                sGrid={sGrid} 
-                />
+            <table>
+                <thead>
+                    {tabHead}
+                </thead>
+            </table>
             {cell}
         </div>
     )

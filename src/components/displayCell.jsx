@@ -5,7 +5,7 @@ const DisplayCell = (props) => {
     const handleClick = () => {
         props.setCell(null)
         return(
-            props.setCell(<DisplayVillager submitEdit={props.submitEdit} villager={props.villager} edit={props.edit} />)
+            props.setCell(<DisplayVillager user={props.user} submitEdit={props.submitEdit} villager={props.villager} edit={props.edit} />)
         )
     }
     return(

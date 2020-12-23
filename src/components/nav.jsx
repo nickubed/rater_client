@@ -1,12 +1,15 @@
 import React from 'react'
 import '../static/nav.css'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const Nav = (props) => {
     const handleLogout = (e) => {
         e.preventDefault()
         localStorage.removeItem('userToken')
         props.updateUser(null)
+        return (
+            <Redirect to="/" />
+            )
     }
     let links = (
         <nav>
