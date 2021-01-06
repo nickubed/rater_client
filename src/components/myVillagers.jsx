@@ -1,37 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../static/griddle.css'
-// import DisplayGrid from './displayGrid'
-import DisplayCell from './displayCell'
+// import DisplayCell from './displayCell'
 
 const MyVillagers = (props) => {
-    let [headings, setHeadings] = useState(['S', 'A', 'B', 'C', 'D', 'F'])
     let [grid, setGrid] = useState([])
     let [postEdit, setPostEdit] = useState(false)
-    let [tabHead, setTabHead] = useState()
-    let [tabBody, setTabBody] = useState()
     
     useEffect(() => {
-
-        // const leet = (grade) => {
-        //     let result = grid.forEach(villager => {
-        //         if(villager.usersVillagers.grade === grade){
-        //             // console.log('hit')
-        //             return <td>{villager.name}</td>
-        //         }
-        //     })
-        //     console.log(result)
-        // }
-
-        // const radBoy = () => {
-        //     let head = headings.map(grade => {
-        //         return ( 
-        //             <th>{grade}</th>
-        //         )
-        //     })
-        //     setTabHead(head)
-        // }
-
+        // You ever spend a month writing a stupid, convoluted solution to a simple problem and just wind up scrapping it completely and writing normal code?
+        // lol yeah neither have i
         const performFetch = async() => { 
             let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
             .then(response => response.json())
