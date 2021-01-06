@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../static/griddle.css'
-// import DisplayCell from './displayCell'
+import DisplayCell from './displayCell'
 
 const MyVillagers = (props) => {
     let [grid, setGrid] = useState([])
+    let [cell, setCell] = useState()
     let [postEdit, setPostEdit] = useState(false)
     
     useEffect(() => {
@@ -20,8 +21,6 @@ const MyVillagers = (props) => {
         }
         performFetch()
     }, [props.user])
-
-
     
     if(!props.user){
         return(
@@ -38,30 +37,31 @@ const MyVillagers = (props) => {
                 <tbody>
                     <tr>
                         <td>S</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'S' ? <img className="villagerPic" src={villager.img} alt={villager.name} />: null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'S' ? <DisplayCell villager={villager} setCell={setCell} />: null)}
                     </tr>
                     <tr>
                         <td>A</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'A' ? <img className="villagerPic" src={villager.img} alt={villager.name} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'A' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>B</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'B' ? <img className="villagerPic" src={villager.img} alt={villager.name} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'B' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>C</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'C' ? <img className="villagerPic" src={villager.img} alt={villager.name} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'C' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>D</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'D' ? <img className="villagerPic" src={villager.img} alt={villager.name} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'D' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>F</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'F' ? <img className="villagerPic" src={villager.img} alt={villager.name} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'F' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
                     </tr>
                 </tbody>
             </table>
+            {cell}
         </div>
     )
 }
