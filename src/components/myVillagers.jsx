@@ -11,14 +11,16 @@ const MyVillagers = (props) => {
     useEffect(() => {
         // You ever spend a month writing a stupid, convoluted solution to a simple problem and just wind up scrapping it completely and writing normal code?
         // lol yeah neither have i
-        const performFetch = async() => { 
-            let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
-            .then(response => response.json())
-            result.forEach((villager) => {
-                setGrid(grid => [...grid, villager])
-            })
+        if(props.user){
+            const performFetch = async() => { 
+                let result = await fetch(`${process.env.REACT_APP_DB_URL}/villager/${props.user.id}`)
+                .then(response => response.json())
+                result.forEach((villager) => {
+                    setGrid(grid => [...grid, villager])
+                })
+            }
+            performFetch()
         }
-        performFetch()
     }, [props.user])
     
     if(!props.user){
