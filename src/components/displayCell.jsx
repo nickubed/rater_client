@@ -9,7 +9,7 @@ const DisplayCell = (props) => {
         )
     }
     return(
-        <td key={props.i}>
+        <td>
             <img className="villagerPic"
                 src={props.villager.img}
                 alt={props.villager.name}
