@@ -38,27 +38,27 @@ const MyVillagers = (props) => {
                 <tbody>
                     <tr>
                         <td>S</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'S' ? <DisplayCell villager={villager} setCell={setCell} />: null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'S' ? <DisplayCell villager={villager} setPostEdit={setPostEdit} setCell={setCell} />: null)}
                     </tr>
                     <tr>
                         <td>A</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'A' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'A' ? <DisplayCell villager={villager} setPostEdit={setPostEdit} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>B</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'B' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'B' ? <DisplayCell villager={villager} setPostEdit={setPostEdit} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>C</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'C' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'C' ? <DisplayCell villager={villager} setPostEdit={setPostEdit} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>D</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'D' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'D' ? <DisplayCell villager={villager} setPostEdit={setPostEdit} setCell={setCell} /> : null)}
                     </tr>
                     <tr>
                         <td>F</td>
-                        {grid.map((villager) => villager.usersVillagers.grade === 'F' ? <DisplayCell villager={villager} setCell={setCell} /> : null)}
+                        {grid.map((villager) => villager.usersVillagers.grade === 'F' ? <DisplayCell villager={villager} setPostEdit={setPostEdit} setCell={setCell} /> : null)}
                     </tr>
                 </tbody>
             </table>
